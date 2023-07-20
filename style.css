@@ -1,0 +1,99 @@
+:root {
+    --background-white: #f8f8f8;
+    --blue: #eef0f4;
+    --orange: #FB765A;
+    --black: #373737;
+    --dark-blue: #4D80E6;
+}
+
+body {
+    color: var(--black);
+    background-color: var(--background-white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+}
+
+.nav {
+    position: sticky;
+    display: flex;
+    justify-content:space-between ;
+    max-width:100%;
+    padding: 2px 20px 2px 20px;
+    background-color: var(--orange);
+    color: var(--background-white);
+}
+
+.updated {
+    display: flex;
+    align-items: center;
+}
+
+.updated svg {
+    margin-right: 12px;
+}
+
+.main {
+    max-width: 900px;
+    padding: 14px 20px 14px 20px;
+    /* margin: 40px auto 40px auto; */
+}
+
+h1 {
+    font-size: 18px;
+    font-family: 'Space Mono', sans-serif;
+}
+
+h2 {
+    font-size: 16px;
+    color: var(--background-white);
+    background-color: var(--black);
+    padding: 4px 6px 4px 6px;
+}
+
+
+#outageTimeline {
+    margin-top: 20px;
+    border: solid 1px var(--black);
+}
+
+.plot svg {
+    /* css styling for timeline plot */
+    background-color: var(--background-white);
+}
+
+.table {
+    padding: 40px;
+    border: solid 1px var(--black);
+    margin: 20px 0 20px 0;
+}
+
+.table tr:hover {
+    background-color: var(--blue);
+}
+
+/* padding on table text */
+td:not(:first-child) {
+    padding-top:6px;
+    padding-bottom:6px;
+}
+
+td {
+    padding-right:12px; 
+    max-width: 140px
+}
+
+.asn-cell {
+    max-height: 100px; 
+    max-width: 140px;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    white-space: pre-wrap;
+}
+
+.asn-cell span {
+    display: inline-block; /* Stack the <span> elements on top of each other */
+    padding: 2px;
+    border: solid 1px var(--dark-blue);
+    background-color: var(--blue);
+    margin: 6px 3px 0px 0px;
+}
