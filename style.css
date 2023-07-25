@@ -106,4 +106,8 @@ td {
     .table {
         overflow-x: auto;
     }
+
+    .updated svg {
+        display: none;
+    }
 }
