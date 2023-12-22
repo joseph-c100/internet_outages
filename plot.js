@@ -23,7 +23,7 @@ try {
 
     // new current date if the outage is ongoing
     const currentDate = new Date()
-    const colours = ["#505050", "#FB765A"]
+    const colours = ["#505050", "#FB765A", "#aff2a5", "#8e80ff"]
 
     // Extracting start and end dates for the line chart
     const dataForLineChart = jsonData7days.result.annotations.map((annotation) => ({
