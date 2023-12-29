@@ -1,8 +1,8 @@
 function updateDateTime() {
   const currentDate = new Date()
   currentDate.setHours(0,0,0,0)
-  const formattedDate = currentDate.toLocaleString(); // Customize the date format as needed
-  document.getElementById('updatedDate').textContent = "Last updated: " + formattedDate;
+  const formattedDate = currentDate.toLocaleDateString(); // Customize the date format as needed
+  document.getElementById('updatedDate').textContent = "Last updated " + formattedDate;
 }
 
 updateDateTime();
