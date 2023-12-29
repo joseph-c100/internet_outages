@@ -7,13 +7,25 @@ async function fetchData() {
         const jsonData7days = await d3.json('https://internetshutdowns.joeclark176.workers.dev/', d3.autoType);
         const jsonData3months = await d3.json('https://internetshutdowns3months.joeclark176.workers.dev/', d3.autoType);
 
-        const currentDate = new Date()
+        const currentDate = new Date();
 
+        // Define column headers for both tables
+        const columnHeaders = ['Country', 'Start Date', 'End Date', 'Outage Cause', 'Scope', 'Description', 'ASN'];
 
-// map data for 7days table
+        // Create a table header for 7 days table
+        const tableHeader7days = d3.select('#outageTableWeek')
+            .append('thead')
+            .append('tr')
+            .selectAll('th')
+            .data(columnHeaders)
+            .enter()
+            .append('th')
+            .text(d => d);
+
+        // map data for 7 days table
         const dataForTable7days = jsonData7days.result.annotations.map((annotation) => ({
             startDate: annotation.startDate,
-            endDate:annotation.endDate || currentDate,
+            endDate: annotation.endDate || currentDate,
             OutageCause: annotation.outage.outageCause,
             Country: annotation.locationsDetails[0].name,
             Scope: annotation.scope,
@@ -21,13 +33,13 @@ async function fetchData() {
             asns: annotation.asns
         }));
 
-
         // Create table rows with the data
         const rows7days = d3.select('#outageTableWeek')
-            .selectAll('tr')
+            .selectAll('tr.row7days')
             .data(dataForTable7days)
             .enter()
-            .append('tr');
+            .append('tr')
+            .attr('class', 'row7days');
 
         // Create table cells and populate with data
         rows7days.append('td').text(d => d.Country);
@@ -46,27 +58,34 @@ async function fetchData() {
             .append('span')
             .text(d => d);
 
+        // Create a table header for 3 months table
+        const tableHeader3months = d3.select('#outageTableMonths')
+            .append('thead')
+            .append('tr')
+            .selectAll('th')
+            .data(columnHeaders)
+            .enter()
+            .append('th')
+            .text(d => d);
 
-
-// map data for 3 months table
+        // map data for 3 months table
         const dataForTable3months = jsonData3months.result.annotations.map((annotation) => ({
             startDate: annotation.startDate,
-            endDate:annotation.endDate || currentDate,
+            endDate: annotation.endDate || currentDate,
             OutageCause: annotation.outage.outageCause,
             Country: annotation.locationsDetails[0].name,
             Scope: annotation.scope,
             description: annotation.description,
             asns: annotation.asns
-
         }));
-
 
         // Create table rows with the data
         const rows3months = d3.select('#outageTableMonths')
-            .selectAll('tr')
+            .selectAll('tr.row3months')
             .data(dataForTable3months)
             .enter()
-            .append('tr');
+            .append('tr')
+            .attr('class', 'row3months');
 
         // Create table cells and populate with data
         rows3months.append('td').text(d => d.Country);
